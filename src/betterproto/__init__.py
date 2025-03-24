@@ -1426,7 +1426,6 @@ class Message(ABC):
             The JSON serializable dict representation of this object.
         """
         output: Dict[str, Any] = {}
-        field_types = self._type_hints()
         defaults = self._betterproto.default_gen
         for field_name, meta in self._betterproto.meta_by_field_name.items():
             field_is_repeated = defaults[field_name] is list
@@ -1514,6 +1513,7 @@ class Message(ABC):
                     else:
                         output[cased_name] = b64encode(value).decode("utf8")
                 elif meta.proto_type == TYPE_ENUM:
+                    field_types = self._type_hints()
                     if field_is_repeated:
                         enum_class = field_types[field_name].__args__[0]
                         if isinstance(value, typing.Iterable) and not isinstance(

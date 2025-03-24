@@ -1,6 +1,6 @@
 [project]
 name = "betterproto"
-version = "2.0.0b7"
+version = "2.0.0b6"
 description = "A better Protobuf / gRPC generator & library"
 authors = [
     {name = "Daniel G. Taylor", email = "danielgtaylor@gmail.com"}
